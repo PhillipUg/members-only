@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
+    @post = Post.new
   end
 
   # GET /posts/1
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_member.posts.build
   end
 
   # GET /posts/1/edit
@@ -22,10 +23,10 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = current_member.posts.build(post_params)
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to root_path, notice: 'Post was successfully created.'
     else
       render :new
     end
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to root_path, notice: 'Post was successfully updated.'
     else
       render :edit
     end
@@ -54,6 +55,6 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:body, :member_id)
+      params.require(:post).permit(:body)
     end
 end
