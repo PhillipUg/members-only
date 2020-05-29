@@ -22,7 +22,6 @@ gem 'turbolinks', '~> 5'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'hirb'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -40,6 +39,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'better_errors'
+  gem 'hirb'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
