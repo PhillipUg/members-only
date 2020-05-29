@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MembersOnly</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>MembersOnly</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+	<% if member_signed_in? %>
+		Logged in as <strong><%= current_member.username %></strong>
+		<%= link_to 'Edit profile', edit_member_registration_path  %>
+		<%= link_to 'Logout', destroy_member_session_path, method: :delete, data: {confirm: "Are you sure?"}  %>
+	<% else %>
+		<%= link_to 'Sign Up', new_member_registration_path %>
+		<%= link_to 'Login', new_member_session_path %>
+	<% end %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <%= yield %>
+</body>
 </html>
