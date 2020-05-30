@@ -1,12 +1,23 @@
 
-<h1>Posts</h1>
+<% if member_signed_in? %>
 
-
-
-<div class="mb-5">    
+<div class="my-5">    
   <%= render 'form', post: @post %>
 </div> 
+<% else %>
 
+<main role="main" class="inner cover my-5">
+  <h1 class="cover-heading">Welcome to the Exclusive Clubhouse</h1>
+  <p class="lead">In here, members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it. So <em>Sign up</em> or <em>Sign In</em> to create a post!</p>
+  <p class="lead">
+    <%= link_to 'Create Post', new_post_path, class: "btn btn-lg btn-secondary" %>
+    <!-- <a href="#" class="btn btn-lg btn-secondary">Create Post</a> -->
+  </p>
+</main>
+
+  
+<% end %>
+ 
 
 <% @posts.each do |post| %>  
 
@@ -22,11 +33,11 @@
       <% if member_signed_in? %>
       <footer class="blockquote-footer"><%= post.member.username %></footer>
     </blockquote>
-      <% if member_signed_in? && current_member.id == post.member_id%>
+    <%# if member_signed_in? && current_member.id == post.member_id%>
 
-    <%= link_to 'Edit', edit_post_path(post) %>
-    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+    <%#= link_to 'Edit', edit_post_path(post) %>
+    <%#= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%# end %>
     <% end %>
   </div>
 </div>
