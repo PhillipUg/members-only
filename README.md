@@ -60,6 +60,9 @@ An Authentication and Authorization system where users can only access areas of 
 
 In this project, i built an exclusive clubhouse where members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it.
 
+<img src="app/assets/images/screen1.png" alt="Logo">
+<br>
+<img src="app/assets/images/screen2.png" alt="Logo">
 
 <!-- ABOUT THE PROJECT -->
 ## Installation
